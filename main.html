@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>DAM Shopping List</title>
 </head>
 <body>
     <div class="shopping-list">
         <div class="shopping-list__item">
-            <form action="" method="post">
+            <h1>Carrito de la compra</h1>
+            <form>
                 <div>
                     <label for="item">Nombre del producto:</label>
                     <input type="text" name="item" id="item">
@@ -24,18 +30,53 @@
                     <input type="number" name="units" id="units">
                 </div>
                 <div>
-                  <input type="submit" value="Añadir al carrito">
+                    <span id="submit" class="material-symbols-outlined">
+                        add_circle
+                    </span>
                 </div>
-              </form>
+            </form>
         </div>
         <div class="shopping-list__total">
-            <div></div>
-            <div></div>
-            <div>
+            <div class="shopping-list__total__items">
+                <span>Articulos en el carrito</span>
+                <span id="articlesDisplay"></span>
+            </div>
+            <div class="shopping-list__total__price">
+                <span>Precio total</span>
+                <h4>0</h4>
+            </div>
+            <div class="shopping-list__method">
                 <label for="payment">Forma de pago:</label>
+                <select name="payment" id="payment">
+                    <option value="card">Tarjeta</option>
+                    <option value="">Efectivo</option>
+                </select>
+            </div>
+            <div class="credit-card">
+                <div>
+                    <label for="owner">Titular de la tarjeta:</label>
+                    <input type="text" name="owner" id="owner">
+                </div>
+                <div>
+                    <label for="cardNumber">Numero de la tarjeta:</label>
+                    <input type="text" name="cardNumber" id="cardNumber">
+                </div>
+                <div>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" name="cvv" id="cvv">
+                </div>
             </div>
         </div>
-        <div class="shopping-list__buttons"></div>
+        <div class="shopping-list__buttons">
+            <div>
+                <input type="checkbox" id="scales" name="scales"
+                checked>
+                <label for="scales">Acepto las condiciones de compra</label>
+            </div>
+            <div>
+
+            </div>
+        </div>
     </div>
 </body>
 </html>
