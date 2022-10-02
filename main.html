@@ -47,14 +47,15 @@
                 <span>Precio total: </span>
                 <h4 id="total-price">0</h4>
             </div>
-            <div class="shopping-list__method">
+            <div id="payment-selector" class="shopping-list__method">
                 <label for="payment">Forma de pago:</label>
                 <select name="payment" id="payment">
+                    <option select value="select">--Selecciona--</option>
                     <option value="card">Tarjeta</option>
-                    <option value="">Efectivo</option>
+                    <option value="cash">Efectivo</option>
                 </select>
             </div>
-            <div class="credit-card">
+            <div class="credit-card hide">
                 <div>
                     <label for="owner">Titular de la tarjeta:</label>
                     <input type="text" name="owner" id="owner">
@@ -68,15 +69,23 @@
                     <input type="text" name="cvv" id="cvv">
                 </div>
             </div>
+            <div class="cash hide">
+                <span>Importe en efectivo:</span>
+                <span id="total-cash"></span>
+            </div>
         </div>
         <div class="shopping-list__buttons">
             <div>
-                <input type="checkbox" id="scales" name="scales"
-                checked>
-                <label for="scales">Acepto las condiciones de compra</label>
+                <input type="checkbox" id="conditions" name="conditions">
+                <label for="conditions">Acepto las condiciones de compra</label>
             </div>
             <div>
-
+                <button disabled class="button" id="print">
+                    Imprimir
+                </button>
+                <button class="button" id="reset">
+                    Reset
+                </button>
             </div>
         </div>
     </div>
