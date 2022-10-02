@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="main.js"></script>
+    <script src="main.js" type="module"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +20,16 @@
                 <div>
                     <label for="item">Nombre del producto:</label>
                     <input type="text" name="item" id="item">
+                    <span id="hide-name" class="hide">falta articulo</span>
                 </div>
                 <div>
                     <label for="price">Precio del producto:</label>
                     <input type="text" name="price" id="price">
+                    <span id="hide-price" class="hide">falta precio</span>
                 </div>
                 <div>
                     <label for="units">Unidades:</label>
-                    <input type="number" name="units" id="units">
+                    <input type="number" name="units" id="units" value="1">
                 </div>
                 <div>
                     <span id="submit" class="material-symbols-outlined">
@@ -38,12 +40,12 @@
         </div>
         <div class="shopping-list__total">
             <div class="shopping-list__total__items">
-                <span>Articulos en el carrito</span>
+                <span>Articulos en el carrito: </span>
                 <span id="articlesDisplay"></span>
             </div>
             <div class="shopping-list__total__price">
-                <span>Precio total</span>
-                <h4>0</h4>
+                <span>Precio total: </span>
+                <h4 id="total-price">0</h4>
             </div>
             <div class="shopping-list__method">
                 <label for="payment">Forma de pago:</label>

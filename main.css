@@ -15,3 +15,7 @@
     'GRAD' 0,
     'opsz' 48
 }
+
+.hide, .hide {
+    visibility: hidden;
+}
