@@ -42,8 +42,8 @@ window.onload = () => {
         // primero lo registra
         const item = newItem();
 
-        // luego hacemos las comprobaciones
-        itemChecker(item, name, price);
+        // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
+        if (!itemChecker(item, name, price)) return;
 
         // Si los inputs son correctos añadimos el producto y calculamos el precio total
         calculateAndDisplayPrice(item, shoppingList, totalPrice);
