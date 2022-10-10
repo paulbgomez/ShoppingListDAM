@@ -50,6 +50,13 @@ window.addEventListener('load', () => {
     const resetBtn = document.getElementById('reset');
     resetBtn.addEventListener('click', () => resetFields(true))
 
+    // Localizamos el trashBtn en el DOM y le anhadimos un evento
+    const trashBtn = document.getElementById('clean-fields');
+    trashBtn.addEventListener('click', () => resetFields(true))
+
+    // localizamos los nombres de los productos
+    const namesProducts = document.getElementById('articlesDisplay');
+
     /**
      * FUNCIONES Y LOGICA
      */
@@ -66,6 +73,7 @@ window.addEventListener('load', () => {
             shoppingList.total = 0;
             totalCash.innerHTML = 0;
             totalPrice.innerHTML = 0;
+            namesProducts.innerHTML = '';
         }
     };     
 
