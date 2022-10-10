@@ -10,15 +10,16 @@ const shoppingList = {
 }
 
 // Aqui declaramos una funcion que devuelve un objeto con los valores del 'producto'
+// con parseFloat.tofixed(2) vamos a aceptar valores enteros y redondearlos a 2 decimales
 const newItem = () => {
     return {
         name: document.getElementById('item').value,
-        price: parseInt(document.getElementById('price').value, 10),
+        price: parseFloat(document.getElementById('price').value).toFixed(2),
         units: document.getElementById('units').value,
     }
 };
 
-window.onload = () => {
+window.addEventListener('load', () => {
     /**
      * ELEMENTOS DEL DOM
      */
@@ -99,4 +100,4 @@ window.onload = () => {
             Metodo de pago:${paymentMethod.value}`
             )
     }
-}
+});

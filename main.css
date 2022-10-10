@@ -6,6 +6,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    height: 100vh;
+}
+
+.shopping-list form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 24px;
+}
+
+.shopping-list form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+
+    margin: 8px 0;
+
+}
+
+label {
+    font-size: 14px;
+}
+
+input {
+    max-width: 25%;
+    border: none;
+    background: #fafafa;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    opacity: 1;
 }
 
 .material-symbols-outlined {
@@ -17,5 +54,16 @@
 }
 
 .hide {
-    visibility: hidden;
+    display: none;
+}
+
+#hide-price, #hide-name {
+    position: absolute;
+    right: -82px;
+    top: -25px;
+    color: #fafafa;
+    background-color: hsl(0deg 100% 65%);
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 4px;
 }
