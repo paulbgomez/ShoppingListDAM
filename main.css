@@ -1,4 +1,4 @@
-:root {
+﻿ :root {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -9,6 +9,15 @@
 
     height: 100vh;
     margin: auto;
+}
+
+.credit-card {
+	display:flex;
+    flex-direction:column;
+    align-items: center;
+    
+    
+ 
 }
 
 .shopping-list__item, .shopping-list__total, .shopping-list__buttons {
@@ -44,6 +53,17 @@
     background: #fafafa;
     box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
 }
+
+.credit-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 24px;
+}
+
+
 
 /* total carrito */
 .shopping-list__total {
@@ -92,7 +112,7 @@
     display: none;
 }
 
-#hide-price, #hide-name {
+#hide-price, #hide-name, #hide-owner, #hide-cardNumber, #hide-cvv {
     position: absolute;
     right: -82px;
     top: -25px;
@@ -102,52 +122,3 @@
     font-size: 12px;
     padding: 4px;
 }
-
-/* tarjeta */
-/* .front,
-.back {
-    display: block;
-    transition-duration: .5s;
-    transition-property: transform, opacity;
-}
-
-.front {
-    transform: rotateY(0deg);
-}
-
-.back {
-    position: absolute;
-    opacity: 0;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    transform: rotateY(-180deg);
-    box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
-    padding: 12px;
-    border-radius: 5px;
-    margin-bottom: 24px;
-}
-
-.front:hover {
-    transform: rotateY(180deg);
-}
-
-.back:hover {
-    opacity: 1;
-    transform: rotateY(0deg);
-}
-
-.flip {
-    position: relative;
-    display: inline-block;
-}
-
-.front,
-.back {
-  display: block;
-  background-size: cover!important;
-  background-position: center!important;
-  padding: 1em 2em;
-  background: #fafafa;
-} */

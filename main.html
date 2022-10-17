@@ -59,19 +59,26 @@
                 </select>
             </div>
             <div class="credit-card hide">
-                <div>
-                    <label for="owner">Titular de la tarjeta:</label>
-                    <input type="text" name="owner" id="owner">
-                </div>
-                <div>
-                    <label for="cardNumber">Numero de la tarjeta:</label>
-                    <input type="text" name="cardNumber" id="cardNumber">
-                </div>
-                <div>
-                    <label for="cvv">CVV:</label>
-                    <input type="text" name="cvv" id="cvv">
-                </div>
-            </div>
+            	<form>
+                	<div>
+                   		 <label for="owner">Titular de la tarjeta:</label>
+                   		 <input type="text" name="owner" id="owner">
+                         <span id="hide-owner" class="hide">falta titutar de la tarjeta</span>
+                         
+             	    </div>
+               	 	<div>
+                   		 <label for="cardNumber">Numero de la tarjeta:</label>
+                   		 <input type="text" name="cardNumber" id="cardNumber">
+                         <span id="hide-cardNumber" class="hide">falta número de la tarjeta</span>
+              	   </div>
+              	   <div>
+                   		 <label for="cvv">CVV:</label>
+                   		 <input type="text" name="cvv" id="cvv">
+                         <span id="hide-cvv" class="hide">falta CVV</span>
+           	 	   </div>
+           	 	    </form>
+            	  </div>
+           
             <div class="cash hide">
                 <span>Importe en efectivo:</span>
                 <span id="total-cash"></span>

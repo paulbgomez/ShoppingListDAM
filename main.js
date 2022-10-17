@@ -2,7 +2,7 @@ import { calculateAndDisplayPrice } from "./hooks/priceCalculators.js";
 import { itemChecker } from "./hooks/inputCheckers.js";
 import { displayProductNames, displayPayment, activatePrintBtn } from "./hooks/domDisplay.js";
 
-// La shopping list tendra un array de items, un total y el metodo de pago
+ // La shopping list tendra un array de items, un total y el metodo de pago
 const shoppingList = {
     products: [],
     total: null,
@@ -16,6 +16,15 @@ const newItem = () => {
         name: document.getElementById('item').value,
         price: parseFloat(document.getElementById('price').value).toFixed(2),
         units: document.getElementById('units').value,
+    
+    }
+ };   
+const newItemCard = () => {
+    return {
+        owner: document.getElementById('owner').value,
+        cardNumber: parseFloat(document.getElementById('cardNumber').value),
+        cvv: document.getElementById('cvv').value,
+    
     }
 };
 
@@ -29,6 +38,9 @@ window.addEventListener('load', () => {
     const units = document.getElementById('units');
     const totalPrice = document.getElementById('total-price');
     const totalCash = document.getElementById('total-cash');
+    const owner = document.getElementById('owner');
+    const cardNumber = document.getElementById('cardNumber');
+    const cvv = document.getElementById('cvv');
 
     // Anhadimos un evento 'change' al input de seleccion de metodo de pago
     const paymentMethod = document.getElementById('payment');
@@ -85,7 +97,7 @@ window.addEventListener('load', () => {
         // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
         if (!itemChecker(item, name, price)) return;
 
-        // Si los inputs son correctos aÃ±adimos el producto y calculamos el precio total
+        // Si los inputs son correctos añadimos el producto y calculamos el precio total
         calculateAndDisplayPrice(item, shoppingList, totalPrice, totalCash);
         displayProductNames(shoppingList);
 
@@ -102,10 +114,17 @@ window.addEventListener('load', () => {
     // Muestra el cuadro con la informacion del carrito de compra
     const modalInfo = () => {
         if (paymentMethod.value === 'select') return alert('Selecciona un metodo de pago');
+        
+        const itemCard = newItemCard();
+
+        // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
+        if (!itemCheckerCard(itemCard, owner, cardNumber, cvv)) return;
+        
+      
         else return alert(
             `Productos de la lista de la compra: ${displayProductNames(shoppingList)}\n
             Total: ${shoppingList.total}\n
-            Metodo de pago:${paymentMethod.value}`
+            Metodo de pago: ${paymentMethod.value}`
             )
     }
 });
