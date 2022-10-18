@@ -1,5 +1,5 @@
 import { calculateAndDisplayPrice } from "./hooks/priceCalculators.js";
-import { itemChecker } from "./hooks/inputCheckers.js";
+import { itemChecker, itemCheckerCard } from "./hooks/inputCheckers.js";
 import { displayProductNames, displayPayment, activatePrintBtn } from "./hooks/domDisplay.js";
 
  // La shopping list tendra un array de items, un total y el metodo de pago
@@ -18,13 +18,13 @@ const newItem = () => {
         units: document.getElementById('units').value,
     
     }
- };   
+ };
+
 const newItemCard = () => {
     return {
         owner: document.getElementById('owner').value,
         cardNumber: parseFloat(document.getElementById('cardNumber').value),
-        cvv: document.getElementById('cvv').value,
-    
+        cvv: document.getElementById('cvv').value
     }
 };
 
@@ -97,7 +97,7 @@ window.addEventListener('load', () => {
         // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
         if (!itemChecker(item, name, price)) return;
 
-        // Si los inputs son correctos añadimos el producto y calculamos el precio total
+        // Si los inputs son correctos aï¿½adimos el producto y calculamos el precio total
         calculateAndDisplayPrice(item, shoppingList, totalPrice, totalCash);
         displayProductNames(shoppingList);
 
@@ -118,6 +118,7 @@ window.addEventListener('load', () => {
         const itemCard = newItemCard();
 
         // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
+        debugger;
         if (!itemCheckerCard(itemCard, owner, cardNumber, cvv)) return;
         
       

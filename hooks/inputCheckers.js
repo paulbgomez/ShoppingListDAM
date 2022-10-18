@@ -46,18 +46,16 @@ const itemCheckerCard = (itemCard, elementOwner, elementCardNumber, elementCvv) 
         return false;
     }
     
-     if (!isNumber(itemCard.cardNumber, 'hide-cardNumber') ){
+    if (!isNumber(itemCard.cardNumber, 'hide-cardNumber') ){
         elementCardNumber.focus();
         return false;
     } 
     
-    if (!checkName(itemCard.cvv, 'hide-cvv')) {
+    if (!checkName(itemCard.cvv, 'hide-cvv') || !isNumber(itemCard.cvv, 'hide-cvv')) {
         elementCvv.focus();
         return false;
     }
 
-  
-    
     if(!checkItemValidityCard(itemCard)) return false;
     else return true;
 }

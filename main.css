@@ -15,9 +15,6 @@
 	display:flex;
     flex-direction:column;
     align-items: center;
-    
-    
- 
 }
 
 .shopping-list__item, .shopping-list__total, .shopping-list__buttons {
@@ -70,7 +67,6 @@
     display: flex;
     flex-direction: column;
     padding: 12px;
-    /* width: 100%; */
     background-color: #fafafa;
     margin-bottom: 12px;
 }
