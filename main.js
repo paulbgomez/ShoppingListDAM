@@ -123,8 +123,8 @@ window.addEventListener('load', () => {
         
       
         else return alert(
-            `Productos de la lista de la compra: ${displayProductNames(shoppingList)}\n
-            Total: ${shoppingList.total}\n
+            `Los artículos de mi carrito son: ${displayProductNames(shoppingList)}\n
+            y el precio total es:  ${shoppingList.total}\n €
             Metodo de pago: ${paymentMethod.value}`
             )
     }
