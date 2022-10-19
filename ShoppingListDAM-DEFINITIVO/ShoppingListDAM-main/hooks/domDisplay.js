@@ -44,7 +44,7 @@ const displayPayment = (paymentValue) => {
 // activa y desactiva el boton dependiendo del booleano isChecked
 const activatePrintBtn = (isChecked) => {
     if(isChecked) document.getElementById('print').disabled = false;
-    else document.getElementById('print').disabled = true;
+    else document.getElementById('print').disabled = true;
 }
 
 export { displayProductNames, displayPayment, activatePrintBtn }

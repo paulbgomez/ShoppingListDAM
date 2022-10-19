@@ -1,9 +1,8 @@
 import { calculateAndDisplayPrice } from "./hooks/priceCalculators.js";
-import { itemChecker } from "./hooks/inputCheckers.js";
+import { itemChecker, itemCheckerCard } from "./hooks/inputCheckers.js";
 import { displayProductNames, displayPayment, activatePrintBtn } from "./hooks/domDisplay.js";
 
-
-// La shopping list tendra un array de items, un total y el metodo de pago
+ // La shopping list tendra un array de items, un total y el metodo de pago
 const shoppingList = {
     products: [],
     total: null,
@@ -11,16 +10,25 @@ const shoppingList = {
 }
 
 // Aqui declaramos una funcion que devuelve un objeto con los valores del 'producto'
+// con parseFloat.tofixed(2) vamos a aceptar valores enteros y redondearlos a 2 decimales
 const newItem = () => {
     return {
         name: document.getElementById('item').value,
-        price: parseInt(document.getElementById('price').value, 10),
+        price: parseFloat(document.getElementById('price').value).toFixed(2),
         units: document.getElementById('units').value,
-        recibed: document.getElementById('recibed').value,
+    
+    }
+ };
+
+const newItemCard = () => {
+    return {
+        owner: document.getElementById('owner').value,
+        cardNumber: parseFloat(document.getElementById('cardNumber').value),
+        cvv: document.getElementById('cvv').value
     }
 };
 
-window.onload = () => {
+window.addEventListener('load', () => {
     /**
      * ELEMENTOS DEL DOM
      */
@@ -28,9 +36,11 @@ window.onload = () => {
     const name = document.getElementById('item');
     const price = document.getElementById('price');    
     const units = document.getElementById('units');
-    const recibed = document.getElementById('recibed');
     const totalPrice = document.getElementById('total-price');
     const totalCash = document.getElementById('total-cash');
+    const owner = document.getElementById('owner');
+    const cardNumber = document.getElementById('cardNumber');
+    const cvv = document.getElementById('cvv');
 
     // Anhadimos un evento 'change' al input de seleccion de metodo de pago
     const paymentMethod = document.getElementById('payment');
@@ -52,6 +62,13 @@ window.onload = () => {
     const resetBtn = document.getElementById('reset');
     resetBtn.addEventListener('click', () => resetFields(true))
 
+    // Localizamos el trashBtn en el DOM y le anhadimos un evento
+    const trashBtn = document.getElementById('clean-fields');
+    trashBtn.addEventListener('click', () => resetFields(true))
+
+    // localizamos los nombres de los productos
+    const namesProducts = document.getElementById('articlesDisplay');
+
     /**
      * FUNCIONES Y LOGICA
      */
@@ -68,6 +85,7 @@ window.onload = () => {
             shoppingList.total = 0;
             totalCash.innerHTML = 0;
             totalPrice.innerHTML = 0;
+            namesProducts.innerHTML = '';
         }
     };     
 
@@ -79,7 +97,7 @@ window.onload = () => {
         // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
         if (!itemChecker(item, name, price)) return;
 
-        // Si los inputs son correctos añadimos el producto y calculamos el precio total
+        // Si los inputs son correctos a�adimos el producto y calculamos el precio total
         calculateAndDisplayPrice(item, shoppingList, totalPrice, totalCash);
         displayProductNames(shoppingList);
 
@@ -96,77 +114,35 @@ window.onload = () => {
     // Muestra el cuadro con la informacion del carrito de compra
     const modalInfo = () => {
         if (paymentMethod.value === 'select') return alert('Selecciona un metodo de pago');
-        else if (paymentMethod.value === 'cash') {
+        
+        const itemCard = newItemCard();
 
-            return alert(
-                `Productos de la lista de la compra: ${displayProductNames(shoppingList)}\n
-                Total: ${shoppingList.total}\n
-                Recibido: ${recibed.value}\n
-                Metodo de pago:${paymentMethod.value}\n
-                Cambio a recibir: ${recibed.value-shoppingList.total}`
-            );
-            
-        } else {
-
-            return alert(
-                `Productos de la lista de la compra: ${displayProductNames(shoppingList)}\n
-                Total: ${shoppingList.total}\n
-                Metodo de pago:${paymentMethod.value}\n`
-            );
-
-        }
+        // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
+        debugger;
+        if (!itemCheckerCard(itemCard, owner, cardNumber, cvv)) return;
+        
+      
+        else return alert(
+            `Los artículos de mi carrito son: ${displayProductNames(shoppingList)}\n
+            y el precio total es:  ${shoppingList.total}\n €
+            Metodo de pago: ${paymentMethod.value}`
+            )
     }
+});
 
-    //maximo 4 caracteres tarjeta
+//maximo 12 caracteres tarjeta
+let caracteres = document.getElementById("cardNumber");
 
-    let caracteres = document.getElementById("digit");
+caracteres.addEventListener('input', function(){
+    if (this.value.length > 12) 
+       this.value = this.value.slice(0,12);
+});
 
-    caracteres.addEventListener('input', function(){
-        if (this.value.length > 4) 
-           this.value = this.value.slice(0,4); 
-    });
 
-    let caracteres1 = document.getElementById("digit1");
+//maximo 3 caracteres tarjeta
+let cvv = document.getElementById("cvv");
 
-    caracteres1.addEventListener('input', function(){
-        if (this.value.length > 4) 
-           this.value = this.value.slice(0,4); 
-    });
-
-    let caracteres2 = document.getElementById("digit2");
-
-    caracteres2.addEventListener('input', function(){
-        if (this.value.length > 4) 
-           this.value = this.value.slice(0,4); 
-    });
-
-    let caracteres3 = document.getElementById("digit3");
-
-    caracteres3.addEventListener('input', function(){
-        if (this.value.length > 4) 
-           this.value = this.value.slice(0,4); 
-    });
-
-    let cvv = document.getElementById("digit_cvv");
-
-    cvv.addEventListener('input', function(){
-        if (this.value.length > 3) 
-           this.value = this.value.slice(0,3); 
-    });
-
-    //voltear tarjeta
-
-    !(function (a) {
-        a(function () {
-             a(".button-sent #back").hide(),
-                  a(".button-sent #continue").click(function (b) {
-                       a("#area .master-card").css("transform", "rotateY(180deg)"),
-                            a(".button-sent #back").show();
-                  }),
-                  a(".button-sent #back").click(function (b) {
-                       a("#area .master-card").css("transform", "rotateY(0deg)"),
-                            a(this).hide();
-                  });
-        });
-    })(jQuery);
-}
+cvv.addEventListener('input', function(){
+    if (this.value.length > 3) 
+       this.value = this.value.slice(0,3); 
+});

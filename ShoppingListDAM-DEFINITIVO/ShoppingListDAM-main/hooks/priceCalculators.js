@@ -7,6 +7,7 @@ const calculateAndDisplayPrice = (item, shoppingList, domElement, cashDomElement
     cashDomElement.innerHTML = shoppingList.total;
 }
 
+
 // calculamos el total del precio de producto
 const calculateTotalPrice = (units, price) => units * price;
 
