@@ -1,5 +1,9 @@
-﻿ :root {
+﻿:root {
     font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: beige;
 }
 
 .shopping-list {
@@ -9,6 +13,8 @@
 
     height: 100vh;
     margin: auto;
+    
+    
 }
 
 .credit-card {
@@ -19,6 +25,7 @@
 
 .shopping-list__item, .shopping-list__total, .shopping-list__buttons {
     width: 50%;
+    
 }
 
 /* primer formulario datos carrito */
@@ -29,6 +36,7 @@
     padding: 12px;
     border-radius: 5px;
     margin-bottom: 24px;
+    
 }
 
 .shopping-list form div {
@@ -36,16 +44,17 @@
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-
+    
     margin: 8px 0;
 }
 
 .shopping-list form div label {
     font-size: 14px;
+    
 }
 
 .shopping-list form div input {
-    max-width: 25%;
+    max-width: 45%;
     border: none;
     background: #fafafa;
     box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
@@ -58,6 +67,7 @@
     padding: 12px;
     border-radius: 5px;
     margin-bottom: 24px;
+    
 }
 
 
@@ -67,8 +77,9 @@
     display: flex;
     flex-direction: column;
     padding: 12px;
-    background-color: #fafafa;
+    background-color: rgb(216, 216, 187);
     margin-bottom: 12px;
+
 }
 
 .shopping-list__total__items {
@@ -118,3 +129,24 @@
     font-size: 12px;
     padding: 4px;
 }
+
+#cardNumber::-webkit-inner-spin-button, 
+#cardNumber::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#cardNumber { 
+    -moz-appearance:textfield; 
+}
+
+#cvv::-webkit-inner-spin-button, 
+#cvv::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#cvv { 
+    -moz-appearance:textfield; 
+}
+

@@ -1,6 +1,6 @@
 import { calculateAndDisplayPrice } from "./hooks/priceCalculators.js";
 import { itemChecker, itemCheckerCard } from "./hooks/inputCheckers.js";
-import { displayProductNames, displayPayment, activatePrintBtn } from "./hooks/domDisplay.js";
+import { displayProductNames, displayPayment, activatePrintBtn, hideAll } from "./hooks/domDisplay.js";
 
  // La shopping list tendra un array de items, un total y el metodo de pago
 const shoppingList = {
@@ -68,7 +68,19 @@ window.addEventListener('load', () => {
 
     // localizamos los nombres de los productos
     const namesProducts = document.getElementById('articlesDisplay');
+    //maximo 12 caracteres tarjeta
 
+    cardNumber.addEventListener('input', function(){
+    if (this.value.length > 12) 
+       this.value = this.value.slice(0,12);
+    });
+
+    //maximo 3 caracteres tarjeta
+
+    cvv.addEventListener('input', function(){
+    if (this.value.length > 3) 
+       this.value = this.value.slice(0,3); 
+    });
     /**
      * FUNCIONES Y LOGICA
      */
@@ -78,6 +90,10 @@ window.addEventListener('load', () => {
         name.value = '';
         price.value = '';
         units.value = 1;
+        owner.value='';
+        cardNumber.value='';
+        cvv.value='';
+        hideAll();
 
         // si queremos que resetee tambien el carrito de la compra, pasaremos true a la funcion
         if (resetShoppingList) {
@@ -124,8 +140,9 @@ window.addEventListener('load', () => {
       
         else return alert(
             `Los artículos de mi carrito son: ${displayProductNames(shoppingList)}\n
-            y el precio total es:  ${shoppingList.total}\n €
+            y el precio total es:  ${shoppingList.total + "€"}\n 
             Metodo de pago: ${paymentMethod.value}`
             )
     }
 });
+

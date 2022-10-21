@@ -19,17 +19,18 @@
             <form>
                 <div>
                     <label for="item">Nombre del producto:</label>
-                    <input type="text" name="item" id="item">
+                    <input type="text" name="item" id="item" placeholder="Producto a comprar" autofocus>
                     <span id="hide-name" class="hide">falta articulo</span>
                 </div>
                 <div>
                     <label for="price">Precio del producto:</label>
-                    <input type="text" name="price" id="price">
+                    <input type="text" name="price" id="price" placeholder="Escriba precio">
                     <span id="hide-price" class="hide">falta precio</span>
                 </div>
                 <div>
                     <label for="units">Unidades:</label>
-                    <input type="number" name="units" id="units" value="1">
+                    <input type="number" name="units" id="units" value="1" min="1" max="99" pattern="^[0-9]+" 
+                        onkeyup="if(this.value>99){this.value='99';}else if(this.value<0){this.value='1';}"></input>
                 </div>
                 <div>
                     <span id="submit" class="material-symbols-outlined">
@@ -62,22 +63,22 @@
             	<form>
                 	<div>
                    		 <label for="owner">Titular de la tarjeta:</label>
-                   		 <input type="text" name="owner" id="owner">
+                   		 <input type="text" name="owner" id="owner" placeholder="Escriba nombre">
                          <span id="hide-owner" class="hide">falta titutar de la tarjeta</span>
                          
              	    </div>
                	 	<div>
                    		 <label for="cardNumber">Numero de la tarjeta:</label>
-                   		 <input type="text" name="cardNumber" id="cardNumber">
-                         <span id="hide-cardNumber" class="hide">falta número de la tarjeta</span>
+                   		 <input type="number" name="cardNumber" id="cardNumber" placeholder="000000000000">
+                         <span id="hide-cardNumber" class="hide">falta nï¿½mero de la tarjeta</span>
               	   </div>
               	   <div>
                    		 <label for="cvv">CVV:</label>
-                   		 <input type="text" name="cvv" id="cvv">
+                   		 <input type="number" name="cvv" id="cvv" placeholder="000">
                          <span id="hide-cvv" class="hide">falta CVV</span>
            	 	   </div>
            	 	    </form>
-            	  </div>
+            </div>
            
             <div class="cash hide">
                 <span>Importe en efectivo:</span>

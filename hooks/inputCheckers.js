@@ -50,8 +50,18 @@ const itemCheckerCard = (itemCard, elementOwner, elementCardNumber, elementCvv) 
         elementCardNumber.focus();
         return false;
     } 
+
+    if (itemCard.cardNumber < 100000000000){
+        elementCardNumber.focus();
+        return false;
+    }
     
     if (!checkName(itemCard.cvv, 'hide-cvv') || !isNumber(itemCard.cvv, 'hide-cvv')) {
+        elementCvv.focus();
+        return false;
+    }
+
+    if (itemCard.cvv < 100){
         elementCvv.focus();
         return false;
     }

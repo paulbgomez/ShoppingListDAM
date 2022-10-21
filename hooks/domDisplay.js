@@ -47,4 +47,4 @@ const activatePrintBtn = (isChecked) => {
     else document.getElementById('print').disabled = true;
 }
 
-export { displayProductNames, displayPayment, activatePrintBtn }
+export { displayProductNames, displayPayment, activatePrintBtn, hideAll }
