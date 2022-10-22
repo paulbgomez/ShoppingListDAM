@@ -135,14 +135,19 @@ window.addEventListener('load', () => {
 
         // luego hacemos las comprobaciones, si no las pasa nos salimos de la funcion
         debugger;
-        if (!itemCheckerCard(itemCard, owner, cardNumber, cvv)) return;
-        
+        if (paymentMethod.value==='card') 
+            if (!itemCheckerCard(itemCard, owner, cardNumber, cvv)) return;
       
-        else return alert(
+             else return alert(
             `Los artículos de mi carrito son: ${displayProductNames(shoppingList)}\n
             y el precio total es:  ${shoppingList.total + "€"}\n 
             Metodo de pago: ${paymentMethod.value}`
             )
+        else return alert(
+                `Los artículos de mi carrito son: ${displayProductNames(shoppingList)}\n
+                y el precio total es:  ${shoppingList.total + "€"}\n 
+                Metodo de pago: ${paymentMethod.value}`
+                )
     }
 });
 
